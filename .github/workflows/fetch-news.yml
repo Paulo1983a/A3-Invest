@@ -2,6 +2,7 @@ name: Fetch Top 5 News
 
 on:
   schedule:
+    # Executa todo dia útil às 17:00 (20:00 UTC)
     - cron: '0 20 * * 1-5'
   workflow_dispatch:
 
@@ -24,8 +25,7 @@ jobs:
         run: python -m sources.infomoney > top5.json
 
       - name: Upload artifact
-        uses:  actions/upload-artifact@v2
-
+        uses: actions/upload-artifact@v2
         with:
           name: top5-news
           path: top5.json
